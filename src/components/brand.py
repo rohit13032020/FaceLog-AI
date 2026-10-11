@@ -35,6 +35,27 @@ def get_logo_data_uri(max_size: int = 256) -> str | None:
         return None
 
 
+@st.cache_data(show_spinner=False)
+def get_logo_bytes(max_size: int = 64) -> bytes | None:
+    """Return resized PNG bytes for the favicon, or None if missing.
+
+    Resized with Pillow so the 2.85MB source isn't re-sent as the page icon.
+    """
+    try:
+        if not LOGO_PATH.exists():
+            return None
+        from PIL import Image
+
+        with Image.open(LOGO_PATH) as img:
+            img = img.convert("RGBA")
+            img.thumbnail((max_size, max_size), Image.LANCZOS)
+            buf = io.BytesIO()
+            img.save(buf, format="PNG")
+        return buf.getvalue()
+    except Exception:
+        return None
+
+
 def hero_logo_html(size: int = 56) -> str:
     """Centered hero logo HTML — same on Home and Teacher pages."""
     uri = get_logo_data_uri()

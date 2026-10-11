@@ -1,9 +1,8 @@
 import streamlit as st
 
-from src.UI.base_layout import (
+from src.ui.base_layout import (
     style_background_home,
     style_base_layout,
-    style_portal_cards,
 )
 from src.components.header_home import header_home
 
@@ -20,7 +19,6 @@ def _feats(items):
 def home_screen():
     style_base_layout()
     style_background_home()
-    style_portal_cards()
     header_home()
     col_teacher, col_student = st.columns(2, gap="medium")
     with col_teacher:

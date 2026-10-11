@@ -1,5 +1,7 @@
 import streamlit as st
 
+from src.components.brand import get_logo_data_uri
+
 
 def footer_home():
     st.markdown(
@@ -13,11 +15,10 @@ def footer_home():
 
 
 def footer_dashboard():
-   git status
-    
+    logo_url = get_logo_data_uri(max_size=128) or ""
     st.markdown(f"""
         <div style="margin-top:2rem; display:flex; gap:6px; justify-content:center; items-align:center">
-         <p style="font-weight:bold; color:black;"> Created with ❤️ by </p>  
+         <p style="font-weight:bold; color:black;"> Created with by </p>  
          <img src='{logo_url}' style='max-height:25px' />
         </div>
                 
