@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Snap Class - Teacher Registration &amp; Portal</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Tailwind CSS v3 with Forms Plugin -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              yellow: '#FFDF00',
+              yellowDark: '#E6C800',
+              blue: '#4D61FF',
+              indigo: '#5B5CE5',
+              violet: '#6366F1',
+              pink: '#F43F8E',
+              rose: '#E83E8C',
+              dark: '#0B0F19',
+              surface: '#EFF2FE',
+            }
+          },
+          boxShadow: {
+            'glow-blue': '0 8px 24px -4px rgba(77, 97, 255, 0.35)',
+            'glow-pink': '0 8px 24px -4px rgba(244, 63, 142, 0.35)',
+            'card': '0 20px 45px -12px rgba(91, 92, 229, 0.12), 0 4px 16px -2px rgba(15, 23, 42, 0.04)',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-styling">
+    /* Custom Scrollbar and iOS Viewport Optimizations */
+    body {
+      -webkit-tap-highlight-color: transparent;
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    .bg-mesh-pattern {
+      background-color: #EBF0FD;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(244, 63, 142, 0.1) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(255, 223, 0, 0.15) 0px, transparent 60%);
+      background-attachment: fixed;
+    }
+
+    .form-input-focus {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .form-input-focus:focus-within {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px -4px rgba(91, 92, 229, 0.15);
+    }
+  </style>
+</head>
+<body class="bg-mesh-pattern min-h-screen text-slate-800 antialiased flex flex-col justify-between selection:bg-brand-blue selection:text-white">
+<!-- BEGIN: TopNavigation -->
+<header class="w-full max-w-xl mx-auto px-4 pt-4 sm:pt-6 pb-2" data-purpose="top-navigation">
+<div class="flex items-center justify-between">
+<!-- Snap Class Logo & Badging -->
+<a aria-label="Snap Class Home" class="flex items-center gap-2.5 group transition-transform active:scale-95" href="#">
+<!-- Logo Emblem -->
+<div class="w-11 h-11 bg-brand-yellow border-2 border-slate-900 rounded-2xl flex items-center justify-center shadow-[3px_3px_0px_#0f172a] transform -rotate-1 group-hover:rotate-0 transition-transform">
+<i class="w-6 h-6 text-slate-950 fill-white stroke-[2.2]" data-lucide="graduation-cap"></i>
+</div>
+<!-- Logo Typography -->
+<div class="flex flex-col leading-none">
+<span class="font-black text-xl tracking-tight text-slate-900 flex items-center">
+            SNAP<span class="text-brand-blue ml-0.5">CLASS</span>
+</span>
+<span class="text-[9px] font-extrabold tracking-widest text-slate-500 uppercase mt-0.5">Teacher Lumina</span>
+</div>
+</a>
+<!-- Quick Back Action Pill (Matches screenshot with modern styling) -->
+<a class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-brand-pink text-white hover:bg-brand-pink/90 active:scale-95 transition-all shadow-sm shadow-pink-200" href="#">
+<i class="w-3.5 h-3.5" data-lucide="arrow-left"></i>
+<span>Go back to Home</span>
+<span class="hidden md:inline-flex items-center ml-1 px-1.5 py-0.5 rounded text-[10px] font-mono bg-white/25 text-white/90">⌘⌫</span>
+</a>
+</div>
+</header>
+<!-- END: TopNavigation -->
+<!-- BEGIN: MainContent -->
+<main class="w-full max-w-xl mx-auto px-4 py-3 sm:py-6 flex-1 flex flex-col justify-center">
+<!-- Header Titles Section -->
+<div class="mb-5 text-center sm:text-left" data-purpose="auth-header">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-brand-blue/10 border border-brand-blue/20 text-brand-blue text-xs font-bold mb-2">
+<i class="w-3.5 h-3.5" data-lucide="shield-check"></i>
+<span>Faculty Access Portal</span>
+</div>
+<h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight leading-tight">
+        Register your teacher profile
+      </h1>
+<p class="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
+        Set up your faculty credentials to manage automated attendance and classroom rosters.
+      </p>
+<!-- Auth Switcher Pill Bar -->
+<div class="mt-4 p-1 bg-slate-200/80 rounded-xl flex items-center gap-1 max-w-xs mx-auto sm:mx-0">
+<button class="flex-1 py-1.5 text-xs font-bold rounded-lg bg-white text-slate-900 shadow-sm transition-all" id="tab-register" type="button">
+          Registration
+        </button>
+<button class="flex-1 py-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors" id="tab-login" type="button">
+          Sign In
+        </button>
+</div>
+</div>
+<!-- Main Registration Card -->
+<div class="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-3xl p-5 sm:p-7 shadow-card relative overflow-hidden" data-purpose="registration-card">
+<!-- Subtle Decorative Accent Bar -->
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-yellow via-brand-blue to-brand-pink"></div>
+<form action="#" class="space-y-4" method="POST" onsubmit="event.preventDefault();">
+<!-- Field 1: Username -->
+<div class="space-y-1.5" data-purpose="field-username">
+<label class="block text-xs font-bold text-slate-700 tracking-wide" for="username">
+            Enter username <span class="text-brand-pink">*</span>
+</label>
+<div class="relative flex items-center form-input-focus rounded-2xl">
+<span class="absolute left-3.5 flex items-center pointer-events-none text-slate-400 font-bold text-sm">
+              @
+            </span>
+<input class="w-full pl-9 pr-4 py-3 rounded-2xl border-slate-200 bg-slate-50/80 hover:bg-slate-50 text-slate-800 text-sm font-semibold placeholder:text-slate-400 focus:bg-white focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/15 transition-all" id="username" name="username" placeholder="username" required="" type="text" value="abhishek"/>
+</div>
+<p class="text-[11px] text-slate-500 font-medium pl-1 flex items-center gap-1">
+<i class="w-3 h-3 text-slate-400" data-lucide="info"></i> Unique teacher handle across institution
+          </p>
+</div>
+<!-- Field 2: Full Name -->
+<div class="space-y-1.5" data-purpose="field-name">
+<label class="block text-xs font-bold text-slate-700 tracking-wide" for="fullName">
+            Enter full name <span class="text-brand-pink">*</span>
+</label>
+<div class="relative flex items-center form-input-focus rounded-2xl">
+<span class="absolute left-3.5 flex items-center pointer-events-none text-slate-400">
+<i class="w-4 h-4" data-lucide="user"></i>
+</span>
+<input class="w-full pl-10 pr-4 py-3 rounded-2xl border-slate-200 bg-slate-50/80 hover:bg-slate-50 text-slate-800 text-sm font-semibold placeholder:text-slate-400 focus:bg-white focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/15 transition-all" id="fullName" name="fullName" placeholder="e.g. Dr. Jane Smith" required="" type="text" value="Abhishek Sharma"/>
+</div>
+</div>
+<!-- Field 3: Department / Subject (Elevated Feature) -->
+<div class="space-y-1.5" data-purpose="field-department">
+<label class="block text-xs font-bold text-slate-700 tracking-wide" for="department">
+            Department &amp; Subject <span class="text-brand-pink">*</span>
+</label>
+<div class="relative flex items-center form-input-focus rounded-2xl">
+<span class="absolute left-3.5 flex items-center pointer-events-none text-slate-400">
+<i class="w-4 h-4" data-lucide="book-open"></i>
+</span>
+<select class="w-full pl-10 pr-10 py-3 rounded-2xl border-slate-200 bg-slate-50/80 hover:bg-slate-50 text-slate-800 text-sm font-semibold focus:bg-white focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/15 transition-all appearance-none cursor-pointer" id="department" name="department">
+<option selected="" value="cs-ai">Computer Science &amp; AI</option>
+<option value="data-struct">Data Structures &amp; Algorithms</option>
+<option value="math">Applied Mathematics</option>
+<option value="physics">Applied Physics &amp; Electronics</option>
+<option value="web-dev">Full Stack Web Engineering</option>
+</select>
+<span class="absolute right-3.5 flex items-center pointer-events-none text-slate-400">
+<i class="w-4 h-4" data-lucide="chevron-down"></i>
+</span>
+</div>
+</div>
+<!-- Field 4: Password -->
+<div class="space-y-1.5" data-purpose="field-password">
+<div class="flex items-center justify-between">
+<label class="block text-xs font-bold text-slate-700 tracking-wide" for="password">
+              Enter password <span class="text-brand-pink">*</span>
+</label>
+<span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+              Strong
+            </span>
+</div>
+<div class="relative flex items-center form-input-focus rounded-2xl">
+<span class="absolute left-3.5 flex items-center pointer-events-none text-slate-400">
+<i class="w-4 h-4" data-lucide="key-round"></i>
+</span>
+<input class="w-full pl-10 pr-12 py-3 rounded-2xl border-slate-200 bg-slate-50/80 hover:bg-slate-50 text-slate-800 text-sm font-semibold placeholder:text-slate-400 focus:bg-white focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/15 transition-all" id="password" name="password" placeholder="Enter your password" required="" type="password" value="SecureProfPass2026!"/>
+<!-- Toggle password visibility button -->
+<button aria-label="Toggle password visibility" class="absolute right-2 px-2 py-1 text-brand-blue hover:text-brand-indigo active:scale-90 transition-transform focus:outline-none" onclick="togglePasswordVisibility('password', this)" type="button">
+<div class="w-7 h-7 rounded-xl bg-brand-blue/10 flex items-center justify-center">
+<i class="w-4 h-4" data-lucide="eye"></i>
+</div>
+</button>
+</div>
+</div>
+<!-- Field 5: Confirm Password -->
+<div class="space-y-1.5" data-purpose="field-confirm-password">
+<label class="block text-xs font-bold text-slate-700 tracking-wide" for="confirmPassword">
+            Confirm password <span class="text-brand-pink">*</span>
+</label>
+<div class="relative flex items-center form-input-focus rounded-2xl">
+<span class="absolute left-3.5 flex items-center pointer-events-none text-slate-400">
+<i class="w-4 h-4" data-lucide="lock"></i>
+</span>
+<input class="w-full pl-10 pr-12 py-3 rounded-2xl border-slate-200 bg-slate-50/80 hover:bg-slate-50 text-slate-800 text-sm font-semibold placeholder:text-slate-400 focus:bg-white focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/15 transition-all" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required="" type="password" value="SecureProfPass2026!"/>
+<!-- Toggle password visibility button -->
+<button aria-label="Toggle password confirmation visibility" class="absolute right-2 px-2 py-1 text-brand-blue hover:text-brand-indigo active:scale-90 transition-transform focus:outline-none" onclick="togglePasswordVisibility('confirmPassword', this)" type="button">
+<div class="w-7 h-7 rounded-xl bg-brand-blue/10 flex items-center justify-center">
+<i class="w-4 h-4" data-lucide="eye"></i>
+</div>
+</button>
+</div>
+</div>
+<!-- Terms & Policy Checkbox -->
+<div class="pt-1 flex items-start gap-2.5">
+<input checked="" class="w-4 h-4 mt-0.5 rounded-md border-slate-300 text-brand-blue focus:ring-brand-blue focus:ring-offset-0 cursor-pointer" id="terms" type="checkbox"/>
+<label class="text-[11px] text-slate-600 leading-snug cursor-pointer select-none" for="terms">
+            I agree to the <a class="font-bold text-brand-blue underline decoration-brand-blue/40 hover:text-brand-indigo" href="#">Faculty Privacy Protocol</a> and automated classroom attendance terms.
+          </label>
+</div>
+<!-- Action Buttons Matching Exact Reference Layout -->
+<div class="pt-4 flex flex-col sm:flex-row items-center gap-3" data-purpose="form-actions">
+<!-- Primary Register Button (Blue / Violet) -->
+<button class="w-full sm:flex-1 py-3.5 px-4 rounded-2xl bg-gradient-to-r from-brand-blue to-brand-indigo hover:from-brand-blue/95 hover:to-brand-indigo/95 text-white font-bold text-sm shadow-glow-blue hover:shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" type="submit">
+<i class="w-4 h-4 group-hover:scale-110 transition-transform" data-lucide="user-plus"></i>
+<span>Register Now</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono bg-white/20 text-white font-medium">⌘ ↵</span>
+</button>
+<!-- Secondary Login Button (Pink / Magenta) -->
+<a class="w-full sm:w-auto sm:px-6 py-3.5 rounded-2xl bg-brand-pink hover:bg-brand-rose text-white font-bold text-sm shadow-glow-pink hover:shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2 text-center" href="#">
+<i class="w-4 h-4" data-lucide="log-in"></i>
+<span>Login instead</span>
+</a>
+</div>
+</form>
+</div>
+<!-- Security Trust Micro-Bar -->
+<div class="mt-4 flex items-center justify-center gap-4 text-[11px] text-slate-500 font-semibold">
+<span class="flex items-center gap-1">
+<i class="w-3 h-3 text-emerald-600" data-lucide="lock"></i> End-to-End Encrypted
+      </span>
+<span class="text-slate-300">•</span>
+<span class="flex items-center gap-1">
+<i class="w-3 h-3 text-brand-yellow" data-lucide="sparkles"></i> AI Camera Sync Ready
+      </span>
+</div>
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: SiteFooter -->
+<footer class="w-full max-w-xl mx-auto px-4 py-4 text-center" data-purpose="site-footer">
+<div class="inline-flex items-center justify-center gap-1.5 text-xs font-medium text-slate-600">
+<span>Created with</span>
+<span class="text-red-500 animate-pulse text-sm">❤️</span>
+<span>by</span>
+<span class="font-black text-slate-900 tracking-wider inline-flex items-center gap-0.5">
+        APNA <span class="text-[#FF7A00]">COLLEGE</span>
+</span>
+</div>
+</footer>
+<!-- END: SiteFooter -->
+<!-- Script for Interactive Password Visibility Toggle -->
+<script data-purpose="password-toggle">
+    function togglePasswordVisibility(inputId, buttonEl) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      
+      const icon = buttonEl.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        if (icon) {
+          icon.setAttribute('data-lucide', 'eye-off');
+          lucide.createIcons();
+        }
+      } else {
+        input.type = 'password';
+        if (icon) {
+          icon.setAttribute('data-lucide', 'eye');
+          lucide.createIcons();
+        }
+      }
+    }
+
+    // Keyboard Shortcut support (Cmd+Enter or Ctrl+Enter to submit)
+    document.addEventListener('keydown', function(e) {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+        const form = document.querySelector('form');
+        if (form) {
+          alert('Submitting Teacher Registration Form...');
+        }
+      }
+      if ((e.metaKey || e.ctrlKey) && e.key === 'Backspace') {
+        // Simulates back navigation
+        console.log('Navigating Back Home...');
+      }
+    });
+
+    // Render Lucide Icons
+    lucide.createIcons();
+  </script>
+</body></html>
