@@ -1,17 +1,26 @@
 import streamlit as st
 
+from src.components.brand import get_logo_data_uri
 from src.ui.base_layout import style_background_dashboard, style_base_layout
 
 
 def header_home():
+    logo_uri = get_logo_data_uri()
+    if logo_uri:
+        logo_html = (
+            '<div class="stitch-logo stitch-logo--img">'
+            f'<img src="{logo_uri}" alt="FaceLog-AI logo" /></div>'
+        )
+    else:
+        logo_html = '<div class="stitch-logo">🎓</div>'
     st.markdown(
-        """
+        f"""
         <div class="stitch-head">
             <div class="stitch-strip">🛡️ Campus Liveness Engine • <b>Active v2.4</b></div>
             <div class="stitch-brand">
-                <div class="stitch-logo">🎓</div>
+                {logo_html}
                 <div class="stitch-word">
-                    <div class="stitch-word-main">SNAP<span>CLASS</span></div>
+                    <div class="stitch-word-main">FaceLog<span>-AI</span></div>
                     <div class="stitch-word-sub">Campus Workspace Portal</div>
                 </div>
             </div>
@@ -23,15 +32,22 @@ def header_home():
 
 
 def header_dashboard():
-
+    logo_uri = get_logo_data_uri()
+    if logo_uri:
+        logo_html = (
+            '<div class="tp-nav-logo tp-nav-logo--img">'
+            f'<img src="{logo_uri}" alt="FaceLog-AI logo" /></div>'
+        )
+    else:
+        logo_html = '<div class="tp-nav-logo">🎓</div>'
 
     st.markdown(
-        """
+        f"""
         <div class="tp-nav">
             <div class="tp-nav-brand">
-                <div class="tp-nav-logo">🎓</div>
+                {logo_html}
                 <div>
-                    <div class="tp-nav-name">SNAP<span>CLASS</span></div>
+                    <div class="tp-nav-name">FaceLog<span>-AI</span></div>
                     <div class="tp-nav-sub">Faculty Portal</div>
                 </div>
             </div>

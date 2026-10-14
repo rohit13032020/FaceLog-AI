@@ -11,7 +11,7 @@ from src.components.brand import get_logo_bytes
 
 def main():
     st.set_page_config(
-        page_title='SnapClass - Making Attendance faster using AI',
+        page_title='FaceLog-AI - Making Attendance faster using AI',
         page_icon=get_logo_bytes() or "🎓",
     )
     if 'login_type' not in st.session_state:

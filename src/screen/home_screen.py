@@ -51,6 +51,6 @@ def home_screen():
         "<div class='lumina-footer'><span class='lumina-pill'>&#128737; Anti-Spoofing Protected</span> "
         "<span class='lumina-pill'>&#128272; End-to-End Encrypted</span> "
         "<span class='lumina-pill'>&#9889; &lt; 0.2s Detection</span><br><br>"
-        "<small>Snap Class Attendance System &bull; Intelligent Campus Platform &bull; Need Help?</small></div>",
+        "<small>FaceLog-AI Attendance System &bull; Intelligent Campus Platform &bull; Need Help?</small></div>",
         unsafe_allow_html=True,
     )

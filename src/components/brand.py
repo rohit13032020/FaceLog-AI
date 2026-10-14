@@ -26,6 +26,10 @@ def get_logo_data_uri(max_size: int = 256) -> str | None:
 
         with Image.open(LOGO_PATH) as img:
             img = img.convert("RGBA")
+            # Trim the large transparent margins so the emblem fills its box.
+            bbox = img.getbbox()
+            if bbox:
+                img = img.crop(bbox)
             img.thumbnail((max_size, max_size), Image.LANCZOS)
             buf = io.BytesIO()
             img.save(buf, format="PNG")
@@ -48,6 +52,10 @@ def get_logo_bytes(max_size: int = 64) -> bytes | None:
 
         with Image.open(LOGO_PATH) as img:
             img = img.convert("RGBA")
+            # Trim the large transparent margins so the emblem fills its box.
+            bbox = img.getbbox()
+            if bbox:
+                img = img.crop(bbox)
             img.thumbnail((max_size, max_size), Image.LANCZOS)
             buf = io.BytesIO()
             img.save(buf, format="PNG")
@@ -62,7 +70,7 @@ def hero_logo_html(size: int = 56) -> str:
     if uri:
         return (
             f"<div><div class='snap-hero-logo'>"
-            f"<img src='{uri}' alt='Snap Class logo' "
+            f"<img src='{uri}' alt='FaceLog-AI logo' "
             f"height='{size}' /></div></div>"
         )
     return f"<div><div class='snap-hero-logo'>{_FALLBACK_EMOJI}</div></div>"
@@ -74,6 +82,6 @@ def emblem_html() -> str:
     if uri:
         return (
             f"<div class='tp-emblem'>"
-            f"<img src='{uri}' alt='Snap Class logo' height='36' /></div>"
+            f"<img src='{uri}' alt='FaceLog-AI logo' height='36' /></div>"
         )
     return f"<div class='tp-emblem'>{_FALLBACK_EMOJI}</div>"

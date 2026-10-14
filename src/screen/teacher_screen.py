@@ -41,7 +41,7 @@ def _portal_header(mode: str):
         "<span class='lumina-live-dot'></span>"
         "AI Facial Recognition v2.4 Active</span>"
         + hero_logo_html(size=56)
-        + "<p class='lumina-brand-title' style='font-size:1.9rem;'>Snap Class</p>"
+        + "<p class='lumina-brand-title' style='font-size:1.9rem;'>FaceLog-AI</p>"
         "<p class='lumina-tagline'>Smart automatic attendance, powered by "
         "real-time neural vision. One snap at a time.</p>"
         "<span class='lumina-live-badge tp-badge'>Faculty Access Portal</span>"
@@ -139,7 +139,7 @@ def teacher_screen():
         "<span class='lumina-pill'>&#128737; Anti-Spoofing Protected</span> "
         "<span class='lumina-pill'>&#128272; End-to-End Encrypted</span> "
         "<span class='lumina-pill'>&#9889; &lt; 0.2s Detection</span><br><br>"
-        "<small>Snap Class Attendance System &bull; Intelligent Campus Platform &bull; Need Help?</small></div>",
+        "<small>FaceLog-AI Attendance System &bull; Intelligent Campus Platform &bull; Need Help?</small></div>",
         unsafe_allow_html=True,
     )
 

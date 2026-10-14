@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-# Snap Class Lumina - Stitch redesign theme
+# FaceLog-AI Lumina - Stitch redesign theme
 # Source: src/UI/stitch_streamlit_ui_redesign/{code.html, DESIGN.md}
 
 _LUMINA_CSS = """
@@ -20,7 +20,10 @@ header[data-testid="stHeader"] { background: transparent !important; }
 div[data-testid="stToolbar"], div[data-testid="stDecoration"] { visibility: hidden; }
 h1 { font-family: 'Plus Jakarta Sans', sans-serif !important; font-weight: 800 !important; letter-spacing: -0.025em !important; color: #0F172A !important; }
 h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif !important; font-weight: 700 !important; color: #0F172A !important; }
-p, span, label, div { font-family: 'Plus Jakarta Sans', sans-serif !important; }
+p, label, div, span:not([translate="no"]) { font-family: 'Plus Jakarta Sans', sans-serif !important; }
+/* Material icon spans (button/label icons) must keep Streamlit's icon font,
+   otherwise ligature names like "ar_on_you" render as raw text. */
+span[translate="no"] { font-family: "Material Symbols Rounded", sans-serif !important; font-weight: 400 !important; font-style: normal; line-height: 1 !important; letter-spacing: normal !important; text-transform: none !important; display: inline-block; white-space: nowrap; word-wrap: normal; direction: ltr; font-feature-settings: "liga"; -webkit-font-feature-settings: "liga"; -webkit-font-smoothing: antialiased; user-select: none; vertical-align: bottom; }
 [data-testid="stMarkdownContainer"] p { color: #0F172A !important; }
 .lumina-live-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0.9rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background: rgba(255,255,255,0.8); border: 1px solid #e0e7ff; color: #4338ca !important; box-shadow: 0 2px 10px -1px rgba(99,102,241,0.15); }
 .lumina-live-dot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: #10b981; animation: lumina-pulse 1.6s ease-in-out infinite; }
@@ -108,6 +111,10 @@ section[data-testid="stSidebar"] { background: rgba(255,255,255,0.85) !important
 .tp-nav { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.4rem 0.1rem 0.1rem 0.1rem; }
 .tp-nav-brand { display: flex; align-items: center; gap: 0.65rem; }
 .tp-nav-logo { width: 2.75rem; height: 2.75rem; background: #FFDF00; border: 2px solid #0f172a; border-radius: 1rem; display: inline-flex; align-items: center; justify-content: center; box-shadow: 3px 3px 0px #0f172a; transform: rotate(-4deg); font-size: 1.35rem; }
+/* Real Logo.png variants: drop the emoji chip chrome, show the emblem itself */
+.stitch-logo--img, .tp-nav-logo--img { width: auto !important; height: auto !important; background: transparent !important; border: none !important; box-shadow: none !important; transform: none !important; font-size: 0 !important; }
+.stitch-logo--img img { display: block; height: 3.1rem; width: auto; }
+.tp-nav-logo--img img { display: block; height: 2.9rem; width: auto; }
 .tp-nav-name { font-weight: 900; font-size: 1.2rem; letter-spacing: -0.02em; color: #0f172a !important; line-height: 1; }
 .tp-nav-name span { color: #4D61FF !important; }
 .tp-nav-sub { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #64748b !important; margin-top: 0.2rem; }

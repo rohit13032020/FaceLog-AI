@@ -10,7 +10,7 @@ def header_home():
         "<span class='lumina-live-dot'></span>"
         "AI Facial Recognition v2.4 Active</span>"
         + hero_logo_html(size=56)
-        + "<p class='lumina-brand-title'>Snap Class</p>"
+        + "<p class='lumina-brand-title'>FaceLog-AI</p>"
         "<p class='lumina-tagline'>Smart automatic attendance, powered by "
         "real-time neural vision. One snap at a time.</p></div>",
         unsafe_allow_html=True,
