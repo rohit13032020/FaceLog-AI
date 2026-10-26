@@ -1,5 +1,3 @@
-
-
 import dlib
 import numpy as np
 import face_recognition_models
@@ -36,6 +34,7 @@ def get_face_embeddings(image_np):
 
         encodings.append(np.array(face_descriptor))
     return encodings
+
 
 @st.cache_resource
 def get_trained_model():
@@ -76,11 +75,11 @@ def train_classifier():
     model_data = get_trained_model()
     return bool(model_data)
 
+
 def predict_attendance(class_image_np):
     encodings = get_face_embeddings(class_image_np)
 
     detected_student = {}
-
 
     try:
         model_data = get_trained_model()
