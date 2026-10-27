@@ -1,20 +1,37 @@
 import streamlit as st
 
 
-# FaceLog-AI Lumina - Stitch redesign theme
-# Source: src/UI/stitch_streamlit_ui_redesign/{code.html, DESIGN.md}
+# FaceLog-AI Lumina 
+
 
 _LUMINA_CSS = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* Background color and gradient */
+
+
 .stApp, .stAppViewContainer, .stMain, .stMainBlockContainer, section.stMain > div {
     background-color: #faf8ff !important;
-    background-image: radial-gradient(circle at 50% 0%, #e0e7ff 0%, #f8fafc 40%, #f1f5f9 100%) !important;
+    background-image: radial-gradient(
+    circle at 50% 0%,
+    #e0e7ff 0%,
+    #f8fafc 40%,
+    #f1f5f9 100%) !important;
     background-attachment: fixed !important;
     font-family: 'Plus Jakarta Sans', -apple-system, 'Segoe UI', Roboto, sans-serif !important;
 }
-.stApp { color: #0F172A !important; }
-.block-container { padding-top: 0.5rem !important; padding-bottom: 1rem !important; max-width: 64rem !important; }
+
+/* Text colors and content width */
+
+.stApp { 
+    color: #0F172A !important;
+ }
+.block-container { 
+    padding-top: 0.5rem !important;
+    padding-bottom: 1rem !important; 
+    max-width: 64rem !important; 
+ }
 #MainMenu, footer { visibility: hidden; }
 header[data-testid="stHeader"] { background: transparent !important; }
 div[data-testid="stToolbar"], div[data-testid="stDecoration"] { visibility: hidden; }
