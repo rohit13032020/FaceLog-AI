@@ -368,9 +368,10 @@ section[data-testid="stSidebar"] {
     color: #475569 !important; 
  }
 /* ---- Stitch landing header/footer ---- */
+
 .stitch-head { 
     text-align: center; 
-    padding: 1.2rem 0 0.2rem 0; 
+    padding: 2rem 0 1.5rem 0; 
  }
 .stitch-strip { 
     display: inline-flex; 
@@ -397,8 +398,8 @@ section[data-testid="stSidebar"] {
     margin: 1rem 0 0.3rem 0; 
  }
 .stitch-logo { 
-    width: 2.9rem; 
-    height: 2.9rem; 
+    width: 4.5rem !important; 
+    height: 4.5rem !important; 
     background: #fbbf24; 
     border: 2px solid #0f172a; 
     border-radius: 1rem; 
@@ -407,7 +408,7 @@ section[data-testid="stSidebar"] {
     justify-content: center; 
     box-shadow: 3px 3px 0px #0f172a; 
     transform: rotate(-4deg); 
-    font-size: 1.35rem; 
+    font-size: 2rem; 
  }
 .stitch-word { 
     text-align: left; 
@@ -415,7 +416,7 @@ section[data-testid="stSidebar"] {
  }
 .stitch-word-main { 
     font-weight: 900; 
-    font-size: 1.5rem; 
+    font-size: 4rem !important; 
     letter-spacing: -0.03em; 
     color: #0F172A !important; 
  }
