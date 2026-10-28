@@ -1,3 +1,6 @@
+# Web application
+streamlit
+
 # Data processing and machine learning
 numpy
 pandas
@@ -9,10 +12,6 @@ git+https://github.com/ageitgey/face_recognition_models
 
 # Build tools
 setuptools<65
-
-# Web application
-streamlit
-
 # Database and authentication
 supabase
 bcrypt
