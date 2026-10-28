@@ -545,41 +545,238 @@ section[data-testid="stSidebar"] {
         !important;
  }
 /* Switcher segmented pill */
-[data-testid="stColumn"]:has(.tp-auth-card-marker) div[data-testid="stSegmentedControl"] { background: #f1f5f9 !important; border-radius: 9999px !important; padding: 4px !important; }
-.tp-switch-note { text-align: center; font-size: 0.72rem; color: #64748b !important; margin-top: 0.5rem; }
-/* Icon inputs inside teacher auth card */
-[data-testid="stColumn"]:has(.tp-auth-card-marker) div[data-testid="stTextInput"] input { background: #f8fafc !important; border: 1px solid #e2e8f0 !important; border-radius: 0.9rem !important; font-size: 0.875rem !important; color: #0f172a !important; }
-[data-testid="stColumn"]:has(.tp-auth-card-marker) div[data-testid="stTextInput"] input::placeholder { color: #94a3b8 !important; }
-[data-testid="stColumn"]:has(.tp-auth-card-marker) div[data-testid="stTextInput"] input:focus { border-color: #6366f1 !important; box-shadow: 0 0 0 3px rgba(99,102,241,0.15) !important; background: #ffffff !important; }
-[data-testid="stColumn"]:has(.tp-auth-card-marker) div[data-testid="stTextInput"] label p { font-size: 0.72rem !important; font-weight: 800 !important; letter-spacing: 0.08em !important; text-transform: uppercase !important; color: #334155 !important; }
+[data-testid="stColumn"]:has(.tp-auth-card-marker) div[data-testid="stSegmentedControl"] { 
+    background: #f1f5f9 !important; 
+    border-radius: 9999px !important; 
+    padding: 4px !important; 
+ }
+
+ /*Switcher Note Text*/
+.tp-switch-note { 
+    text-align: center; 
+    font-size: 0.72rem; 
+    color: #64748b !important; 
+    margin-top: 0.5rem; 
+ }
+/* Teacher Authentication Input Fields */
+
+/*Input field background and border*/
+[data-testid="stColumn"]:has(.tp-auth-card-marker) 
+    div[data-testid="stTextInput"] input { 
+        background: #f8fafc !important; 
+        border: 1px solid #e2e8f0 !important; 
+        border-radius: 0.9rem !important; 
+        font-size: 0.875rem !important; 
+        color: #0f172a !important; 
+    }
+/*Placeholder text color*/
+[data-testid="stColumn"]:has(.tp-auth-card-marker) 
+div[data-testid="stTextInput"] input::placeholder { 
+    color: #94a3b8 !important; 
+    }
+
+/*Input field focus effect*/
+[data-testid="stColumn"]:has(.tp-auth-card-marker) 
+div[data-testid="stTextInput"] input:focus { 
+    border-color: #6366f1 !important; 
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15) !important; 
+    background: #ffffff !important; 
+    }
+
+/*Input field label styling*/
+[data-testid="stColumn"]:has(.tp-auth-card-marker) 
+div[data-testid="stTextInput"] label p { 
+    font-size: 0.72rem !important; 
+    font-weight: 800 !important; 
+    letter-spacing: 0.08em !important; 
+    text-transform: uppercase !important; 
+    color: #334155 !important; 
+    }
+
 /* Teacher auth buttons: primary blue glow, secondary pink glow (Stitch) */
-[data-testid="stColumn"]:has(.tp-auth-card-marker) div.stButton > button[kind="primary"] { background: linear-gradient(to right, #4D61FF, #5B5CE5) !important; border-radius: 1rem !important; font-weight: 700 !important; box-shadow: 0 8px 24px -4px rgba(77,97,255,0.35) !important; }
-[data-testid="stColumn"]:has(.tp-auth-card-marker) div.stButton > button[kind="secondary"] { background: #F43F8E !important; color: #ffffff !important; border: none !important; border-radius: 1rem !important; font-weight: 700 !important; box-shadow: 0 8px 24px -4px rgba(244,63,142,0.35) !important; }
-[data-testid="stColumn"]:has(.tp-auth-card-marker) div.stButton > button[kind="secondary"]:hover { background: #E83E8C !important; color: #ffffff !important; }
-[data-testid="stColumn"]:has(.tp-auth-card-marker) div.stButton > button[kind="secondary"] p { color: #ffffff !important; }
-[data-testid="stColumn"]:has(.tp-auth-card-marker) input[type="checkbox"] { accent-color: #4D61FF !important; width: 1rem; height: 1rem; }
-.tp-trust { display: flex; align-items: center; justify-content: center; gap: 0.6rem; font-size: 0.68rem; font-weight: 600; color: #64748b !important; margin-top: 1rem; flex-wrap: wrap; }
+[data-testid="stColumn"]:has(.tp-auth-card-marker) 
+div.stButton > button[kind="primary"] { 
+    background: linear-gradient(to right, #4D61FF, #5B5CE5) !important; 
+    border-radius: 1rem !important; 
+    font-weight: 700 !important; 
+    box-shadow: 0 8px 24px -4px rgba(77,97,255,0.35) !important; 
+    }
+
+/*Secondary button*/
+[data-testid="stColumn"]:has(.tp-auth-card-marker) 
+div.stButton > button[kind="secondary"] { 
+    background: #F43F8E !important; 
+    color: #ffffff !important; 
+    border: none !important; 
+    border-radius: 1rem !important; 
+    font-weight: 700 !important; 
+    box-shadow: 0 8px 24px -4px rgba(244,63,142,0.35) !important;
+    }
+
+/*Secondary button hover effect*/
+[data-testid="stColumn"]:has(.tp-auth-card-marker) 
+div.stButton > button[kind="secondary"]:hover { 
+    background: #E83E8C !important; 
+    color: #ffffff !important;
+    }
+
+/*Button text colors*/
+[data-testid="stColumn"]:has(.tp-auth-card-marker) 
+div.stButton > button[kind="secondary"] p {
+    color: #ffffff !important; 
+ }
+
+/*Checkbox Styling*/
+[data-testid="stColumn"]:has(.tp-auth-card-marker) 
+    input[type="checkbox"] { 
+        accent-color: #4D61FF !important; 
+        width: 1rem; 
+        height: 1rem;
+ }
+
+/*Trust Message Styling*/
+.tp-trust { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 0.6rem; 
+    font-size: 0.68rem; 
+    font-weight: 600; 
+    color: #64748b !important; 
+    margin-top: 1rem; 
+    flex-wrap: wrap;
+ }
 /* Teacher portal top nav (Stitch TopNavigation) */
-.tp-nav { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.4rem 0.1rem 0.1rem 0.1rem; }
-.tp-nav-brand { display: flex; align-items: center; gap: 0.65rem; }
-.tp-nav-logo { width: 2.75rem; height: 2.75rem; background: #FFDF00; border: 2px solid #0f172a; border-radius: 1rem; display: inline-flex; align-items: center; justify-content: center; box-shadow: 3px 3px 0px #0f172a; transform: rotate(-4deg); font-size: 1.35rem; }
+.tp-nav { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 0.75rem; 
+    padding: 0.4rem 0.1rem 0.1rem 0.1rem; 
+ }
+
+ /*Navigation brand*/
+.tp-nav-brand { 
+    display: flex; 
+    align-items: center; 
+    gap: 0.65rem;
+ }
+
+ /*Navigation logo*/
+.tp-nav-logo { 
+    width: 2.75rem; 
+    height: 2.75rem; 
+    background: #FFDF00; 
+    border: 2px solid #0f172a; 
+    border-radius: 1rem; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    box-shadow: 3px 3px 0px #0f172a; 
+    transform: rotate(-4deg); 
+    font-size: 1.35rem;
+ }
+
 /* Real Logo.png variants: drop the emoji chip chrome, show the emblem itself */
-.stitch-logo--img, .tp-nav-logo--img { width: auto !important; height: auto !important; background: transparent !important; border: none !important; box-shadow: none !important; transform: none !important; font-size: 0 !important; }
-.stitch-logo--img img { display: block; height: 3.1rem; width: auto; }
-.tp-nav-logo--img img { display: block; height: 2.9rem; width: auto; }
-.tp-nav-name { font-weight: 900; font-size: 1.2rem; letter-spacing: -0.02em; color: #0f172a !important; line-height: 1; }
-.tp-nav-name span { color: #4D61FF !important; }
-.tp-nav-sub { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #64748b !important; margin-top: 0.2rem; }
-.tp-live { display: inline-flex; align-items: center; gap: 0.45rem; background: rgba(255,255,255,0.9); border: 1px solid #e2e8f0; border-radius: 9999px; padding: 0.35rem 0.8rem; font-size: 0.7rem; font-weight: 700; color: #0f172a !important; box-shadow: 0 1px 2px rgba(15,23,42,0.06); }
-.tp-live-dot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: #10b981; animation: lumina-pulse 1.6s ease-in-out infinite; }
-.tp-back { text-align: center; margin: 0.35rem 0 0.8rem 0; }
-.tp-back span { font-size: 0.75rem; font-weight: 600; color: #475569 !important; text-decoration: underline; text-underline-offset: 3px; }
-.lumina-footer { text-align: center; padding: 1.2rem 1rem 0.3rem 1rem; }
-.lumina-footer small { color: #94a3b8 !important; font-size: 0.75rem; }
-a { color: #4f46e5 !important; }
+.stitch-logo--img,
+.tp-nav-logo--img { 
+    width: auto !important; 
+    height: auto !important; 
+    background: transparent !important; 
+    border: none !important; 
+    box-shadow: none !important; 
+    transform: none !important; 
+    font-size: 0 !important;
+ }
+
+ /*Logo image size*/
+.stitch-logo--img img { 
+    display: block;
+    height: 3.1rem;
+    width: auto;
+ }
+
+ /*Navigation logo image size*/
+.tp-nav-logo--img img { 
+    display: block; 
+    height: 2.9rem; 
+    width: auto;
+ }
+
+ /*Navigation Brand Name*/
+.tp-nav-name { 
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: -0.02em; 
+    color: #0f172a !important;
+    line-height: 1;
+ }
+
+.tp-nav-name span { 
+    color: #4D61FF !important;
+ }
+.tp-nav-sub { 
+    font-size: 0.6rem; 
+    font-weight: 700; 
+    letter-spacing: 0.14em; 
+    text-transform: uppercase; 
+    color: #64748b !important; 
+    margin-top: 0.2rem;
+ }
+
+ /*Live Status Indicator*/
+.tp-live { 
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid #e2e8f0; 
+    border-radius: 9999px; 
+    padding: 0.35rem 0.8rem; 
+    font-size: 0.7rem; 
+    font-weight: 700; 
+    color: #0f172a !important; 
+    box-shadow: 0 1px 2px rgba(15,23,42,0.06);
+ }
+.tp-live-dot { 
+    width: 0.5rem;
+    height: 0.5rem; 
+    border-radius: 9999px; 
+    background: #10b981; 
+    animation: lumina-pulse 1.6s ease-in-out infinite;
+ }
+.tp-back { 
+    text-align: center; 
+    margin: 0.35rem 0 0.8rem 0;
+ }
+.tp-back span { 
+    font-size: 0.75rem; 
+    font-weight: 600; 
+    color: #475569 !important; 
+    text-decoration: underline; 
+    text-underline-offset: 3px;
+ }
+.lumina-footer { 
+    text-align: center; 
+    padding: 1.2rem 1rem 0.3rem 1rem;
+ }
+.lumina-footer small { 
+    color: #94a3b8 !important;
+    font-size: 0.75rem;
+ }
+ 
+ /*Styling All Links*/
+a { 
+    color: #4f46e5 !important;
+    }
 @media (max-width: 640px) {
-  .block-container { padding-left: 1rem !important; padding-right: 1rem !important; }
-  .lumina-brand-title { font-size: 1.7rem !important; }
+  .block-container { 
+    padding-left: 1rem !important; 
+    padding-right: 1rem !important;
+ }
+  .lumina-brand-title { 
+        font-size: 1.7rem !important;
+    }
 }
 </style>
 """
