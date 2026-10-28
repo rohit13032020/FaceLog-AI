@@ -10,8 +10,8 @@ from src.pipelines.face_pipeline import predict_attendance, get_face_embeddings,
 from src.pipelines.voice_pipeline import get_voice_embedding
 from src.database.db import get_all_students, create_student, get_student_subjects, get_student_attendance, unenroll_student_to_subject
 import time
+from src.components.dialog_auto_enroll import auto_enroll_dialog
 
-from src.components.dialog_enroll import auto_enroll_dialog
 from src.components.subject_card import subject_card
 
 def student_dashboard():
@@ -21,12 +21,16 @@ def student_dashboard():
     with c1:
         header_dashboard()
     with c2:
-        st.subheader(f"""Welcome, {student_data['name']} """)
-        if st.button("Logout", type='secondary', key='logoutbtn_student_dashboard', shortcut="control+backspace"):
-            st.session_state['is_logged_in'] = False
-            del st.session_state.student_data 
-            st.rerun()
+     if st.button(
+        'Enroll in Subject',
+        type='primary',
+        width='stretch',
+    ):
+        st.session_state['show_enroll_dialog'] = True
+        st.session_state.pop('enroll_subject_to_confirm', None)
 
+if st.session_state.get('show_enroll_dialog', False):
+    auto_enroll_dialog()
 
     st.space()
 
