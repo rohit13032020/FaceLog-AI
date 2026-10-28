@@ -17,15 +17,13 @@ def main():
     if 'login_type' not in st.session_state:
         st.session_state['login_type'] = None
 
-    match st.session_state['login_type']:
-        case 'teacher':
-            teacher_screen()
-
-        case 'student':
-            student_screen()
-
-        case None:
-            home_screen()
+    login_type = st.session_state['login_type']
+    if login_type == 'teacher':
+        teacher_screen()
+    elif login_type == 'student':
+        student_screen()
+    elif login_type is None:
+        home_screen()
 
     join_code = st.query_params.get('join-code')
     if join_code:

@@ -1,32 +1,126 @@
 import streamlit as st
+import time
+
 from src.database.db import (
     enroll_student_to_subject,
     lookup_subject_by_code,
     check_enrollment,
 )
 
-import time
 
-
-@st.dialog("Enroll in Subject")
+@st.dialog("Quick Enrollment")
 def auto_enroll_dialog():
-    st.write('Enter the subject code provided by your teacher to enroll')
-    join_code = st.text_input('Subject Code', placeholder='Eg. CS101')
 
-    if st.button('Enroll now', type='primary', width='stretch'):
-        if join_code:
-            res, _ = lookup_subject_by_code(join_code, 'subject_id, name, subject_code')
-            if res.data:
-                subject = res.data[0]
-                student_id = st.session_state.student_data['student_id']
+    student_id = st.session_state.student_data["student_id"]
 
-                check = check_enrollment(subject['subject_id'], student_id)
-                if check.data:
-                    st.warning('You are already enrolled in this program')
+    # Step 1: Enter the subject code
+    with st.form("subject_enrollment_form"):
+
+        subject_code = st.text_input(
+            "Enter Subject Code",
+            placeholder="e.g. CS101",
+        ).strip()
+
+        find_subject = st.form_submit_button(
+            "Find Subject",
+            type="primary",
+            width="stretch",
+        )
+
+    # Step 2: Find the subject in the database
+    if find_subject:
+
+        if not subject_code:
+            st.warning("Please enter a subject code.")
+
+        else:
+            try:
+                res, _ = lookup_subject_by_code(
+                    subject_code,
+                    "subject_id, name",
+                )
+
+                if not res.data:
+                    st.error("Subject code not found. Please check the code.")
+
+                    st.session_state.pop(
+                        "enroll_subject_to_confirm", None
+                    )
+
                 else:
-                    enroll_student_to_subject(student_id, subject['subject_id'])
-                    st.success('Succesfully enrolled!')
+                    subject = res.data[0]
+
+                    check = check_enrollment(
+                        subject["subject_id"],
+                        student_id,
+                    )
+
+                    if check.data:
+                        st.info("You are already enrolled in this subject.")
+
+                        st.session_state.pop(
+                            "enroll_subject_to_confirm", None
+                        )
+
+                    else:
+                        st.session_state[
+                            "enroll_subject_to_confirm"
+                        ] = subject
+
+            except Exception as e:
+                st.error(f"Unable to find the subject: {e}")
+
+    # Step 3: Show the subject and ask for confirmation
+    subject = st.session_state.get("enroll_subject_to_confirm")
+
+    if subject:
+
+        st.divider()
+
+        st.subheader("Subject Found")
+
+        st.write(f"**Subject Name:** {subject['name']}")
+
+        st.write("Would you like to enroll in this subject?")
+
+        col1, col2 = st.columns(2)
+
+        # Cancel enrollment
+        with col1:
+            if st.button(
+                "Cancel",
+                width="stretch",
+            ):
+                st.session_state.pop(
+                    "enroll_subject_to_confirm", None
+                )
+                st.session_state.pop("enroll_subject_code", None)
+                st.session_state["show_enroll_dialog"] = False
+                st.rerun()
+
+        # Confirm enrollment
+        with col2:
+            if st.button(
+                "Yes, enroll now!",
+                type="primary",
+                width="stretch",
+            ):
+                try:
+                    enroll_student_to_subject(
+                        student_id,
+                        subject["subject_id"],
+                    )
+
+                    st.session_state.pop(
+                        "enroll_subject_to_confirm", None
+                    )
+                    st.session_state.pop("enroll_subject_code", None)
+                    st.session_state["show_enroll_dialog"] = False
+
+                    st.toast("Successfully enrolled in the subject!")
+
                     time.sleep(1)
                     st.rerun()
-        else:
-            st.warning('Please enter a subject code')
+
+                except Exception as e:
+                    st.error(f"Enrollment failed: {e}")
