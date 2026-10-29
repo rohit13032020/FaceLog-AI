@@ -31,7 +31,7 @@ def header_home():
     )
 
 
-def header_dashboard():
+def header_dashboard(portal_title="Faculty Portal"):
     logo_uri = get_logo_data_uri()
     if logo_uri:
         logo_html = (
@@ -48,7 +48,7 @@ def header_dashboard():
                 {logo_html}
                 <div>
                     <div class="tp-nav-name">FaceLog<span>-AI</span></div>
-                    <div class="tp-nav-sub">Faculty Portal</div>
+                    <div class="tp-nav-sub">{portal_title}</div>
                 </div>
             </div>
             <div class="tp-live"><span class="tp-live-dot"></span>Live Sync</div>

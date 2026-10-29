@@ -9,7 +9,7 @@ from src.database.db import (
 
 
 @st.dialog("Quick Enrollment")
-def auto_enroll_dialog():
+def enroll_dialog():
 
     student_id = st.session_state.student_data["student_id"]
 
@@ -40,7 +40,7 @@ def auto_enroll_dialog():
                     "subject_id, name",
                 )
 
-                if not res.data:
+                if not res or not res.data:
                     st.error("Subject code not found. Please check the code.")
 
                     st.session_state.pop(
@@ -55,7 +55,7 @@ def auto_enroll_dialog():
                         student_id,
                     )
 
-                    if check.data:
+                    if check and check.data:
                         st.info("You are already enrolled in this subject.")
 
                         st.session_state.pop(
@@ -124,3 +124,6 @@ def auto_enroll_dialog():
 
                 except Exception as e:
                     st.error(f"Enrollment failed: {e}")
+
+
+auto_enroll_dialog = enroll_dialog
